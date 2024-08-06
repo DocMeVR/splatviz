@@ -14,6 +14,7 @@ class VideoWidget:
         self.radius = 6
         self.resolution = 1024
         self.fov = 40
+        self.flip = False
 
     @imgui_utils.scoped_by_object_id
     def __call__(self, show=True):
@@ -40,8 +41,15 @@ class VideoWidget:
             imgui.same_line(viz.label_w)
             _changed, self.fov = imgui.input_int("##fov", self.fov)
 
+            imgui.text("Invert direction")
+            imgui.same_line(viz.label_w)
+            _changed, self.flip = imgui.checkbox("##flip", self.flip)
+
             if imgui_utils.button("Render", viz.button_w):
-                xs = np.linspace(0, 2 * np.pi, self.num_frames, endpoint=False)
+                if self.flip:
+                    xs = np.linspace(2 * np.pi, 0, self.num_frames, endpoint=False)
+                else:
+                    xs = np.linspace(0, 2 * np.pi, self.num_frames, endpoint=False)
                 for x in xs:
                     extrinsic = LookAtPoseSampler.sample(
                         horizontal_mean=x,
