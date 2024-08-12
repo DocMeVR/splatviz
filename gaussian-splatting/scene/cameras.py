@@ -95,7 +95,10 @@ class CustomCam:
         self.FoVx = fovx
         self.znear = znear
         self.zfar = zfar
-        self.world_view_transform = extr.T.inverse().cuda()
+
+        rotation = extr[:3, :3].T.cpu()
+        translation = -rotation @ extr[:3, 3].cpu()
+        self.world_view_transform = torch.tensor(getWorld2View2(rotation, translation)).transpose(0, 1).cuda()
         self.projection_matrix = (
             getProjectionMatrix(znear=self.znear, zfar=self.zfar, fovX=self.FoVx, fovY=self.FoVy).transpose(0, 1).cuda()
         )
@@ -103,7 +106,5 @@ class CustomCam:
             self.world_view_transform.unsqueeze(0).bmm(self.projection_matrix.unsqueeze(0))
         ).squeeze(0).cuda()
 
-        # worldview inverse
-        self.inv_full_proj_transform = torch.inverse(self.full_proj_transform).cuda()
-        # print(self.inv_full_proj_transform)
-        self.camera_center = -self.full_proj_transform[:3, -1]
+        self.inv_full_proj_transform = torch.inverse(self.full_proj_transform).transpose(0,1).cuda()
+        self.camera_center = extr[:3, 3].cuda()
