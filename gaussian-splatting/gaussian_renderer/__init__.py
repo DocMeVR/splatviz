@@ -128,6 +128,7 @@ def render_simple(viewpoint_camera, pc: GaussianModel, bg_color: torch.Tensor, s
         scale_modifier=scaling_modifier,
         viewmatrix=viewpoint_camera.world_view_transform,
         projmatrix=viewpoint_camera.full_proj_transform,
+        inv_projmatrix=viewpoint_camera.inv_full_proj_transform,
         sh_degree=pc.active_sh_degree,
         campos=viewpoint_camera.camera_center,
         prefiltered=False,

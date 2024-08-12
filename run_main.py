@@ -80,6 +80,7 @@ class Visualizer(imgui_window.ImguiWindow):
         if self._async_renderer is not None:
             self._async_renderer.close()
             self._async_renderer = None
+        exit(0)
 
     def print_error(self, error):
         error = str(error)
@@ -226,7 +227,7 @@ def main(data_path, use_decoder):
     while not viz.should_close():
         viz.draw_frame()
     viz.close()
-
+    exit(0)
 
 if __name__ == "__main__":
     main()

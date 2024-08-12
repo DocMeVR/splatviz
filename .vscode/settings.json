@@ -57,6 +57,7 @@
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
+    "*.shader": "shaderlab",
     "cmath": "cpp",
     "__functional_base": "cpp",
     "atomic": "cpp",
@@ -91,6 +92,20 @@
     "stop_token": "cpp",
     "streambuf": "cpp",
     "thread": "cpp",
-    "variant": "cpp"
+    "variant": "cpp",
+    "__config": "cpp",
+    "compare": "cpp",
+    "exception": "cpp",
+    "format": "cpp",
+    "map": "cpp",
+    "ostream": "cpp",
+    "set": "cpp",
+    "xhash": "cpp",
+    "xmemory": "cpp",
+    "xstring": "cpp",
+    "xtree": "cpp",
+    "xutility": "cpp",
+    "stdexcept": "cpp",
+    "random": "cpp"
   }
 }
