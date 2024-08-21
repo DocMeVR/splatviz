@@ -105,6 +105,5 @@ class CustomCam:
         self.full_proj_transform = (
             self.world_view_transform.unsqueeze(0).bmm(self.projection_matrix.unsqueeze(0))
         ).squeeze(0).cuda()
-
-        self.inv_full_proj_transform = torch.inverse(self.full_proj_transform).transpose(0,1).cuda()
-        self.camera_center = extr[:3, 3].cuda()
+        self.inv_full_proj_transform = torch.inverse(self.full_proj_transform).cuda()
+        self.camera_center = self.world_view_transform.inverse()[3, :3].cuda()

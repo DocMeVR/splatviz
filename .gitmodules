@@ -3,5 +3,5 @@
 	url = https://gitlab.inria.fr/bkerbl/simple-knn.git
 [submodule "gaussian-splatting/submodules/diff-gaussian-rasterization"]
 	path = gaussian-splatting/submodules/diff-gaussian-rasterization
-	url = https://github.com/vaixr/_diff-gaussian-rasterization.git
+	url = git@github.com:vaixr/_diff-gaussian-rasterization.git
 	branch = fy-xtx-sh
