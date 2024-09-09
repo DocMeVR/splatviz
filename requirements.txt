@@ -5,7 +5,6 @@ click==8.1.0
 contourpy==1.2.1
 cuda-python==12.4.0
 cycler==0.12.1
-diff-gauss==0.0.0
 filelock==3.15.4
 fonttools==4.53.1
 fsspec==2024.6.1
